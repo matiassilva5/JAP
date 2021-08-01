@@ -1,2 +1,1 @@
-# JAP
- Proyecto obligatorio
+# ecommerce-capacitador
