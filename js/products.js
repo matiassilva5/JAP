@@ -38,9 +38,15 @@ function showProductsList(){
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
                             <h4 class="mb-1">`+ product.name +`</h4>
-                            <small class="text-muted"> ` + product.cost +` `+ product.currency + `</small>
+                            <small class="text-muted"> ` + product.soldCount + ` artículos vendidos</small>
+
                         </div>
                         <p class="mb-1">` + product.description + `</p>
+                        <br><br>
+                        <p class="mb-1">Precio: `+ product.cost +` `+ product.currency + `</p>
+
+
+
                     </div>
                 </div>
             </a>
