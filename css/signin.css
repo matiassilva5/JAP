@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -13,10 +15,14 @@
   }
 }
 
-
+/*estilo de letra e imagen de fondo para el html del login*/
 html,
 body {
   height: 100%;
+  font-family: 'Numans', sans-serif;
+  background-image: url('../img/fondo-login.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 body {
@@ -34,10 +40,9 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: auto;
+  background-color: rgb(190, 233, 250);
 }
-.form-signin .checkbox {
-  font-weight: 400;
-}
+
 .form-signin .form-control {
   position: relative;
   box-sizing: border-box;

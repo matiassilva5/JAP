@@ -139,3 +139,15 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+
+/*color de fondo y color de letra para los html de categorias y productos*/
+.pb-5{
+  /*background-color:#3b83d0;*/
+  background-color: #003366;
+  color: white;
+}
+/*poner en negrita los nombres de productos, nombres de categorias y el precio de los productos*/
+#nom-prod, #nom-cat,#precio-prod{
+    font-weight:bold;
+  }
