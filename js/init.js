@@ -39,9 +39,17 @@ var getJSONData = function(url){
         return result;
     });
 }
+function agregarNombreUsuario(){
+  if (localStorage.getItem("usuario")!=null){
+    var nomUsuario = `<a class="py-2 d-none d-md-inline-block" href="my-profile.html">` + localStorage.getItem("usuario") + `</a>`;
+    document.getElementById("cabezal").innerHTML += nomUsuario;
+  }
+}
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  agregarNombreUsuario();
 });

@@ -1,10 +1,9 @@
 //Se guarda en el localStorage los datos ingresados por el usuario en el login
 function guardar(check, inputUsuario, inputPassword) {
-  if (check.checked) {
+ // if (check.checked) {
     localStorage.setItem("usuario", inputUsuario); //setItem almacena el usuario en la posición "usuario"
     localStorage.setItem("password", inputPassword); // Almaceno la contraseña de la misma manera
-  }
-  sessionStorage.setItem("usuario", inputUsuario);
+  //}
 }
 
 //Esta funcion es llamada cuando el usuario confirma que quiere loguearse

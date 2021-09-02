@@ -1,6 +1,6 @@
 /*aquí se declaran e inicializan variables y constantes que se van a usar en el js */
-const ORDER_ASC_BY_NAME = "AZ";
-const ORDER_DESC_BY_NAME = "ZA";
+const ORDER_ASC_BY_COST = "asc$";
+const ORDER_DESC_BY_COST = "desc$";
 const ORDER_BY_REL = "Rel.";
 var currentProductsArray = [];
 var currentSortCriteria = undefined;
@@ -10,22 +10,28 @@ var maxCost = undefined;
 /*esta función ordena los productos según el criterio indicado (ascendente o descendente)*/
 function sortProducts(criteria, array) {
     let result = [];
-    if (criteria === ORDER_ASC_BY_NAME) {
+    if (criteria === ORDER_ASC_BY_COST) {
         result = array.sort(function (a, b) {
-            if (a.name < b.name) { return -1; }
-            if (a.name > b.name) { return 1; }
+            let aCount = parseInt(a.cost);
+            let bCount = parseInt(b.cost);
+            
+            if (aCount < bCount) { return -1; }
+            if (aCount > bCount) { return 1; }
             return 0;
         });
-    } else if (criteria === ORDER_DESC_BY_NAME) {
+    } else if (criteria === ORDER_DESC_BY_COST) {
         result = array.sort(function (a, b) {
-            if (a.name > b.name) { return -1; }
-            if (a.name < b.name) { return 1; }
+            let aCount = parseInt(a.cost);
+            let bCount = parseInt(b.cost);
+
+            if (aCount > bCount) { return -1; }
+            if (aCount < bCount) { return 1; }
             return 0;
         });
     } else if (criteria === ORDER_BY_REL) {
         result = array.sort(function (a, b) {
-            let aCount = parseInt(a.cost);
-            let bCount = parseInt(b.cost);
+            let aCount = parseInt(a.soldCount);
+            let bCount = parseInt(b.soldCount);
 
             if (aCount > bCount) { return -1; }
             if (aCount < bCount) { return 1; }
@@ -91,20 +97,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
     //la primera vez que mostramos la lista de productos es en orden ascendente según el nombre
     getJSONData(PRODUCTS_URL).then(function (resultObj) {
         if (resultObj.status === "ok") {
-            sortAndShowProducts(ORDER_ASC_BY_NAME, resultObj.data);
+            sortAndShowProducts(ORDER_ASC_BY_COST, resultObj.data);
         }
     });
 
     //si escogemos ordenar de forma ascendente (A-Z) se llama a éste evento
     document.getElementById("sortAsc").addEventListener("click", function () {
-        sortAndShowProducts(ORDER_ASC_BY_NAME);
+        sortAndShowProducts(ORDER_ASC_BY_COST);
         /*llamamos a la función que ordena y muestra los items,
         pasandole por parámetro el criterio deseado*/
     });
 
     //si escogemos ordenar de forma descendente (Z-A) se llama a éste evento
     document.getElementById("sortDesc").addEventListener("click", function () {
-        sortAndShowProducts(ORDER_DESC_BY_NAME);
+        sortAndShowProducts(ORDER_DESC_BY_COST);
         /*llamamos a la función que ordena y muestra los items,
         pasandole por parámetro el criterio deseado*/
     });
