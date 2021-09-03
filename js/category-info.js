@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             //Muestro las imagenes en forma de galería
             showImagesGallery(category.images);
+            
         }
     });
 });
