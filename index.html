@@ -7,24 +7,19 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v3.8.5">
+
   <title>Iniciar sesión</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/sign-in/">
-
-  <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-
   <link href="css/signin.css" rel="stylesheet">
 
-
   <script src="js/index.js"></script>
-
-
 </head>
 
 <body class="text-center">
   <!--formulario de envío de datos ingresados, se redirecciona hacia el home en caso de que la info sea válida-->
-  <form class="form-signin">
+  <form class="form-signin" action="home.html" onsubmit="return confirmar();">
     <img class="mb-4" src="img/login.png" alt="" width="100%">
     <h1 class="h3 mb-3 font-weight-normal">Iniciar sesión</h1>
     <!--inputs para ingresar los datos del usuario necesarios para loguearse-->
@@ -38,10 +33,10 @@
         <input type="checkbox" value="remember-me" id="recuerda"> Recuérdame
       </label>
       <span><i class="fab fa-google-plus-square"></i></span>
-
     </div>
     <!--botón para confirmar/validar el logueo-->
-    <button class="btn btn-lg btn-primary btn-block" type="button" id="login">Confirmar</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Confirmar</button>
   </form>
+
 </body>
 </html>

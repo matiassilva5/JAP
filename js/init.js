@@ -7,6 +7,8 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/pro
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 
+var cerrar = false;
+
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
@@ -41,10 +43,21 @@ var getJSONData = function(url){
 }
 function agregarNombreUsuario(){
   if (localStorage.getItem("usuario")!=null){
-    var nomUsuario = `<a class="py-2 d-none d-md-inline-block" href="my-profile.html">` + localStorage.getItem("usuario") + `</a>`;
-    document.getElementById("cabezal").innerHTML += nomUsuario;
+  
+    var elem = `<div class="dropdown show">
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" 
+                  id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  ${localStorage.getItem("usuario")} </a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="my-profile.html"> Mi Perfil </a>
+                      <a id="cerrarSesion" class="dropdown-item" href="index.html"> Cerrar sesión </a>
+                  </div>
+                </div>`;
+    
+    document.getElementById("cabezal").innerHTML += elem;
   }
 }
+
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -52,4 +65,13 @@ function agregarNombreUsuario(){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
   agregarNombreUsuario();
+  if (document.getElementById("cerrarSesion")!==null){
+    document.getElementById("cerrarSesion").addEventListener("click", function(event){
+       localStorage.clear();
+    })
+  } else if (localStorage.getItem("usuario")===null){
+      alert("No estas logueado!");
+      location.href = "index.html";
+  }
 });
+
