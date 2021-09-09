@@ -117,9 +117,9 @@ function agregarComentario(user, description, score, dateTime){
         var elem3 = "";
         var elem4 = "";
         var htmlContentToAppend = "";
-        elem1 = `<li class="row">
-             <div class=" col-md-8 comment-main-level">
-                <div class="comment-box" id="comment-box">
+        elem1 = `<li class="">
+             <div class="row">
+                <div class=" comment-box" >
 
                
              <!-- Contenedor del Comentario -->
@@ -129,7 +129,7 @@ function agregarComentario(user, description, score, dateTime){
                             <h6 class="comment-name by-author">
                                 <a href="http://creaticode.com/blog">${user}</a>
                             </h6>
-                            <span id="time">${dateTime}</span>
+                            <span id="time"> ${dateTime}</span>
                         </div>
                         <div class="col-md-6">
                         `
@@ -145,8 +145,8 @@ function agregarComentario(user, description, score, dateTime){
         }
 
             elem4 = `</div>
-                        </div>
-                          </div>
+                   </div>
+                  </div>
                     <div class="comment-content">
                        ${description}
                     </div>

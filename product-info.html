@@ -63,7 +63,7 @@
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
           </div>
         </dd>
-      </dl>
+  
 <!--
         <dt>Productos relacionados</dt>
         <dd>
@@ -71,37 +71,40 @@
         </dd>
 
       <a type="button" class="btn btn-light btn-lg btn-block" href="#">Ver productos relacionados</a>
+      comments-container
     -->
 
     
 
       <!--SECTOR DE COMENTARIOS-->
-      <div class="comments-container">
+      <div class="">
         <h2>Comentarios</h2>
 
-        <ul id="lista-comentarios" class="comments-list">
+        <ul id="lista-comentarios" class=" col-md-8 comments-list">
             
         </ul>
-         <form onsubmit="return comentar();">
-            <label for="newComent">Agregar comentario</label>
-            <textarea class="form-control" id="newComent">
-                
-            </textarea>
-            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="rating">
-              <option selected>Puntaje</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <button type="submit" class="btn btn-primary">Comentar</button>
-
-         </form>
+        
       </div>
+       <form class="row" onsubmit="return comentar();">
+           <div class="col-md-8">
+              <textarea class="form-control">
+                  
+              </textarea>
+              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="rating">
+                <option selected>Puntaje</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+         
+             <button type="submit" class="btn btn-primary" id="coment-button">Comentar</button>
+            </div>
+         </form>
 
 
-
+    </dl>
 
     </div>
   </main>
