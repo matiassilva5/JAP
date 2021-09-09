@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             productCostHTML.innerHTML = product.cost + ` ` + product.currency;
             soldCountHTML.innerHTML = product.soldCount;
             categoryHTML.innerHTML = product.category;
-            //relatedProductsHTML.innerHTML = product.relatedProducts;
 
 /*    "relatedProducts": [1, 3]
 */
@@ -50,4 +49,112 @@ document.addEventListener("DOMContentLoaded", function(e){
             showImagesGallery(product.images);
         }
     });
+
+
+
+
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function(resultObj2){
+        if (resultObj2.status === "ok")
+        {
+            comentarios = resultObj2.data;
+            agregarComentarios(comentarios);
+        }
+    });
 });
+
+/*En esta funcion vamos a agregar los comentarios al elemento html creado para contenerlos*/
+function agregarComentarios(comentarios){
+
+    let htmlContentToAppend = "";
+    let coment; 
+    for(let i = 0; i < comentarios.length; i++){
+        coment = comentarios[i];
+        agregarComentario(coment.user, coment.description, coment.score, coment.dateTime)
+    }
+}
+
+
+function comentar(){
+    var coment = document.getElementById("newComent").value;
+    var box = document.getElementById("lista-comentarios");
+    var user = localStorage.getItem("usuario");
+    var score = document.getElementById("rating").value;
+
+    let date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    if(month < 10){
+        month = `0${month}`;
+    }
+    if (day < 10){
+        day = `0${day}`;
+    }
+    var hour = date.getHours();
+    if (hour < 10){
+        hour = `0${hour}`;
+    }
+    var minutes = date.getMinutes();
+    if (minutes < 10){
+        minutes = `0${minutes}`;
+    }
+    var seconds = date.getSeconds();
+    if (seconds < 10){
+        seconds = `0${seconds}`;
+    }
+    var dateTime = `${year}-${month}-${day} ${hour}:${minutes}:${seconds}`; 
+
+    agregarComentario(user, coment, score, dateTime);
+
+    return false;
+}
+
+function agregarComentario(user, description, score, dateTime){
+        var elem1 = "";
+        var elem2 = "";
+        var elem3 = "";
+        var elem4 = "";
+        var htmlContentToAppend = "";
+        elem1 = `<li class="row">
+             <div class=" col-md-8 comment-main-level">
+                <div class="comment-box" id="comment-box">
+
+               
+             <!-- Contenedor del Comentario -->
+                <div class="comment-head">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6 class="comment-name by-author">
+                                <a href="http://creaticode.com/blog">${user}</a>
+                            </h6>
+                            <span id="time">${dateTime}</span>
+                        </div>
+                        <div class="col-md-6">
+                        `
+
+        elem2 = "";
+        for (let i=1; i<=score;i++){
+            elem2 += `<span class="fa fa-star checked"></span>`
+        }
+
+        elem3 = "";
+        for (let i=1; i<=5-score;i++){
+            elem3 += `<span class="fa fa-star"></span>`
+        }
+
+            elem4 = `</div>
+                        </div>
+                          </div>
+                    <div class="comment-content">
+                       ${description}
+                    </div>
+                     </div>
+             </div>
+            </li>
+        `
+        htmlContentToAppend = elem1+elem2+elem3+elem4;
+
+        document.getElementById("lista-comentarios").innerHTML += htmlContentToAppend;
+}

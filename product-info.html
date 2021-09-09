@@ -14,6 +14,7 @@
 
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/comentario.css" rel="stylesheet">
 </head>
 
 <body>
@@ -62,14 +63,46 @@
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
           </div>
         </dd>
+      </dl>
 <!--
         <dt>Productos relacionados</dt>
         <dd>
           <p id="relatedProducts"></p>
-        </dd>-->
+        </dd>
 
-      </dl>
       <a type="button" class="btn btn-light btn-lg btn-block" href="#">Ver productos relacionados</a>
+    -->
+
+    
+
+      <!--SECTOR DE COMENTARIOS-->
+      <div class="comments-container">
+        <h2>Comentarios</h2>
+
+        <ul id="lista-comentarios" class="comments-list">
+            
+        </ul>
+         <form onsubmit="return comentar();">
+            <label for="newComent">Agregar comentario</label>
+            <textarea class="form-control" id="newComent">
+                
+            </textarea>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="rating">
+              <option selected>Puntaje</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Comentar</button>
+
+         </form>
+      </div>
+
+
+
+
     </div>
   </main>
   <footer class="text-muted">
