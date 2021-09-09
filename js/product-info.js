@@ -108,6 +108,9 @@ function comentar(){
 
     agregarComentario(user, coment, score, dateTime);
 
+    document.getElementById("newComent").value="";
+    document.getElementById("rating").value="Puntaje";
+
     return false;
 }
 
