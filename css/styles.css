@@ -5,18 +5,23 @@
 .jumbotron .display-4{
     font-weight: bold;
 }
-
+/*
 .jumbotron {
-  height: 50vh;
+  height: 25%;
   padding: 5em inherit;
   margin-bottom: 0;
   background-color: #53C0FB;
   background: url('../img/cover_back.png');
-  background-size: cover;
+  background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
+}*/
+.jumbotron{
+    background: url("../img/cover_back.png") no-repeat center center; 
+    
+    background-size: 100% 100%;
 }
 
 @media (min-width: 768px) {
@@ -151,3 +156,8 @@ a.custom-card:hover {
 #nom-prod, #nom-cat,#precio-prod{
     font-weight:bold;
   }
+
+#dropdown {
+  margin-left: 5%;
+  margin-right: 1%;
+}

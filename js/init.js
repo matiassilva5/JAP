@@ -44,21 +44,32 @@ var getJSONData = function(url){
 function agregarNombreUsuario(){
   if (localStorage.getItem("usuario")!=null){
   
-    var elem = `<div class="dropdown show">
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" 
+    var elem = ` <div id="dropdown" class="nav-item dropdown">
+        <a class="btn btn-secondary nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         ${localStorage.getItem("usuario")}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="my-profile.html"> Mi Perfil </a>
+          <a id="cerrarSesion" class="dropdown-item" href="index.html"> Cerrar sesión</a>
+        </div>
+      </div>`;
+    
+    document.getElementById("cabezal").innerHTML += elem;
+  }
+}
+
+/*
+<div class=" nav-item dropdown dropdown show">
+                  <a class="nav-link btn btn-secondary dropdown-toggle" href="#" role="button" 
                   id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   ${localStorage.getItem("usuario")} </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                       <a class="dropdown-item" href="my-profile.html"> Mi Perfil </a>
                       <a id="cerrarSesion" class="dropdown-item" href="index.html"> Cerrar sesión </a>
                   </div>
-                </div>`;
-    
-    document.getElementById("cabezal").innerHTML += elem;
-  }
-}
+                </div>
 
-
+*/
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
