@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 });
 
-/*En esta funcion vamos a agregar los comentarios al elemento html creado para contenerlos*/
+/*En esta función vamos a agregar los comentarios al elemento html creado para contenerlos*/
 function agregarComentarios(comentarios){
 
     let htmlContentToAppend = "";
@@ -73,12 +73,27 @@ function agregarComentarios(comentarios){
     }
 }
 
-
+/*Esta función sirve para crear un nuevo comentario*/
 function comentar(){
     var coment = document.getElementById("newComent").value;
     var box = document.getElementById("lista-comentarios");
     var user = localStorage.getItem("usuario");
-    var score = document.getElementById("rating").value;
+    var estrella1 = document.getElementById("radio5");
+    var estrella2 = document.getElementById("radio4");
+    var estrella3 = document.getElementById("radio3");
+    var estrella4 = document.getElementById("radio2");
+    var estrella5 = document.getElementById("radio1");
+    var score = 0
+    if(estrella5.checked)
+        score = 5
+    else if (estrella4.checked)
+        score = 4
+    else if (estrella3.checked)
+        score = 3
+    else if (estrella2.checked)
+        score = 2
+    else if (estrella1.checked)
+        score = 1
 
     let date = new Date();
 
@@ -109,11 +124,11 @@ function comentar(){
     agregarComentario(user, coment, score, dateTime);
 
     document.getElementById("newComent").value="";
-    document.getElementById("rating").value="Puntaje";
 
     return false;
 }
 
+/*Esta función agrega un comentario a la lista*/
 function agregarComentario(user, description, score, dateTime){
         var elem1 = "";
         var elem2 = "";

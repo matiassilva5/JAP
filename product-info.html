@@ -15,6 +15,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/comentario.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -104,22 +106,18 @@
         </ul>
         
       </div>
-       <form class="row" onsubmit="return comentar();">
-           <div class="col-md-8">
-              <textarea class="form-control" id="newComent">  </textarea>
-            
-              <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="rating">
-                <option selected>Puntaje</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-         
-             <button type="submit" class="btn btn-primary" id="coment-button">Comentar</button>
-            </div>
-         </form>
+       <div class="col-md-8">
+          <textarea class="form-control" id="newComent">  </textarea>
+        
+         <div id="wrapper">
+
+            <p class="clasificacion">
+            <input id="radio1" type="radio" name="estrellas" value="5"><label for="radio1">&#9733;</label><input id="radio2" type="radio" name="estrellas" value="4"><label for="radio2">&#9733;</label><input id="radio3" type="radio" name="estrellas" value="3"><label for="radio3">&#9733;</label><input id="radio4" type="radio" name="estrellas" value="2"><label for="radio4">&#9733;</label><input id="radio5" type="radio" name="estrellas" value="1"><label for="radio5">&#9733;</label>
+            </p>
+          </div>
+     
+         <button type="submit" class="btn btn-primary" id="coment-button" onclick="comentar()">Comentar</button>
+        </div>
 
 
     </dl>

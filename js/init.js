@@ -44,7 +44,7 @@ var getJSONData = function(url){
 function agregarNombreUsuario(){
   if (localStorage.getItem("usuario")!=null){
   
-    var elem = ` <div class="nav-item dropdown">
+    var elem = ` <div id="dropdown" class="nav-item dropdown">
         <a class="btn btn-secondary nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          ${localStorage.getItem("usuario")}
         </a>

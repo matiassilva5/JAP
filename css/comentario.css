@@ -210,3 +210,16 @@ body {
 #time {
 	color: #999;
 }
+
+
+input[type = "radio"]{ display:none;/*position: absolute;top: -1000em;*/}
+label{ color:grey;}
+
+.clasificacion{
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label{color:orange;}
+input[type = "radio"]:checked ~ label{color:orange;}

@@ -17,7 +17,13 @@
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
+}
+
+.img-fluid{
+  max-width: 100%;
+  height:  auto;
 }*/
+
 .jumbotron{
     background: url("../img/cover_back.png") no-repeat center center; 
     
@@ -156,4 +162,11 @@ a.custom-card:hover {
 #nom-prod, #nom-cat,#precio-prod{
     font-weight:bold;
   }
+
+#dropdown {
+  margin-right: 5%;
+}
+
+
+
 
