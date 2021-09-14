@@ -57,13 +57,13 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj2.status === "ok")
         {
             comentarios = resultObj2.data;
-            agregarComentarios(comentarios);
+            insertarComentarios(comentarios);
         }
     });
 });
 
 /*En esta función vamos a agregar los comentarios al elemento html creado para contenerlos*/
-function agregarComentarios(comentarios){
+function insertarComentarios(comentarios){
 
     let htmlContentToAppend = "";
     let coment; 
@@ -152,16 +152,13 @@ function agregarComentario(user, description, score, dateTime){
                         <div class="col-md-6">
                         `
 
-        elem2 = "";
-        for (let i=1; i<=score;i++){
-            elem2 += `<span class="fa fa-star checked"></span>`
-        }
-
-        elem3 = "";
-        for (let i=1; i<=5-score;i++){
-            elem3 += `<span class="fa fa-star"></span>`
-        }
-
+            for (let i=1; i<=5;i++){
+                if (i<=score){
+                    elem2 += `<span class="fa fa-star checked"></span>`
+                } else {
+                    elem3 += `<span class="fa fa-star"></span>`
+                }
+            }
             elem4 = `</div>
                    </div>
                   </div>
