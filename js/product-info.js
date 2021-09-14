@@ -71,6 +71,13 @@ function insertarComentarios(comentarios){
         coment = comentarios[i];
         agregarComentario(coment.user, coment.description, coment.score, coment.dateTime)
     }
+    if (localStorage.getItem("comentarios") != null){
+        var comentariosNuevos = JSON.parse(localStorage.getItem("comentarios"));
+        for(let i = 0; i < comentariosNuevos.length; i++){
+            coment = comentariosNuevos[i];
+            agregarComentario(coment.user, coment.description, coment.score, coment.dateTime)
+        }
+    }
 }
 
 /*Esta función sirve para crear un nuevo comentario*/
@@ -123,7 +130,23 @@ function comentar(){
 
     agregarComentario(user, coment, score, dateTime);
 
-    document.getElementById("newComent").value="";
+
+    /* 
+    "persistencia" para comentarios nuevos. 
+    Existen hasta que se cierra sesión y se limpia el localstorage
+    */
+    var nuevo = [{"score": score,
+                    "description": coment,
+                    "user": user,
+                    "dateTime": dateTime}]
+    if (localStorage.getItem("comentarios")!=null)
+        var array = JSON.parse(localStorage.getItem("comentarios"));//paso de json a objeto js
+    else
+        var array = [];//inicializo el arreglo ya que es mi primer comentario
+    array = array.concat(nuevo);
+    localStorage.setItem("comentarios", JSON.stringify(array))//inserto el comentario en formato json
+
+    document.getElementById("newComent").value=""; /*vacío el textarea*/
 
     return false;
 }
@@ -140,36 +163,38 @@ function agregarComentario(user, description, score, dateTime){
                 <div class=" comment-box" >
 
                
-             <!-- Contenedor del Comentario -->
-                <div class="comment-head">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6 class="comment-name by-author">
-                                <a href="http://creaticode.com/blog">${user}</a>
-                            </h6>
-                            <span id="time"> ${dateTime}</span>
-                        </div>
-                        <div class="col-md-6">
-                        `
-
-            for (let i=1; i<=5;i++){
-                if (i<=score){
-                    elem2 += `<span class="fa fa-star checked"></span>`
-                } else {
-                    elem3 += `<span class="fa fa-star"></span>`
-                }
-            }
-            elem4 = `</div>
-                   </div>
-                  </div>
-                    <div class="comment-content">
-                       ${description}
+         <!-- Contenedor del Comentario -->
+            <div class="comment-head">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6 class="comment-name by-author">
+                            <a href="http://creaticode.com/blog">${user}</a>
+                        </h6>
+                        <span id="time"> ${dateTime}</span>
                     </div>
-                     </div>
-             </div>
-            </li>
-        `
-        htmlContentToAppend = elem1+elem2+elem3+elem4;
+                    <div class="col-md-6">
+                    `
 
-        document.getElementById("lista-comentarios").innerHTML += htmlContentToAppend;
+        for (let i=1; i<=5;i++){
+            if (i<=score){
+                elem2 += `<span class="fa fa-star checked"></span>`
+            } else {
+                elem3 += `<span class="fa fa-star"></span>`
+            }
+        }
+        elem4 = `</div>
+               </div>
+              </div>
+                <div class="comment-content">
+                   ${description}
+                </div>
+                 </div>
+         </div>
+        </li>`
+
+    htmlContentToAppend = elem1+elem2+elem3+elem4;
+
+    document.getElementById("lista-comentarios").innerHTML += htmlContentToAppend;
+
+   
 }
