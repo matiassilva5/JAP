@@ -80,49 +80,42 @@ function insertarComentarios(comentarios) {
 }
 
 /*Esta función agrega un comentario a la lista del html*/
-function agregarComentario(user, description, score, dateTime) {
-    var elem1 = "";
-    var elem2 = "";
-    var elem3 = "";
-    var elem4 = "";
+function agregarComentario(user, description, score, dateTime) {    
     var htmlContentToAppend = "";
-    elem1 = `<li class="">
-         <div class="row">
-            <div class=" comment-box" >
 
-           
-     <!-- Contenedor del Comentario -->
-        <div class="comment-head">
-            <div class="row">
-                <div class="col-md-6">
-                    <h6 class="comment-name by-author">
-                        <a href="http://creaticode.com/blog">${user}</a>
-                    </h6>
-                    <span id="time"> ${dateTime}</span>
-                </div>
-                <div class="col-md-6">
-                `
-
-    for (let i = 1; i <= 5; i++) {
-        if (i <= score) {
-            elem2 += `<span class="fa fa-star checked"></span>`
-        } else {
-            elem3 += `<span class="fa fa-star"></span>`
-        }
-    }
-    elem4 = `</div>
-           </div>
-          </div>
-            <div class="comment-content">
-               ${description}
-            </div>
-             </div>
-     </div>
-    </li>`
-
-    htmlContentToAppend = elem1 + elem2 + elem3 + elem4;
+    htmlContentToAppend = `<li class="">
+                                <div class="row">
+                                    <div class=" comment-box" >
+                                        <div class="comment-head">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h6 class="comment-name by-author">
+                                                        <a href="http://creaticode.com/blog">${user}</a>
+                                                    </h6>
+                                                    <span id="time"> ${dateTime}</span>
+                                                </div>
+                                                <div class="col-md-6">${drawStars(score)}</div>
+                                            </div>
+                                        </div>
+                                        <div class="comment-content">${description}</div>
+                                    </div>
+                                </div>
+                            </li>`;
 
     document.getElementById("lista-comentarios").innerHTML += htmlContentToAppend;
+}
+
+function drawStars(score){
+    var checked = "";
+    var unChecked = "";
+    for (let i = 1; i <= 5; i++) {
+        if (i <= score) {
+            checked += `<span class="fa fa-star checked"></span>`
+        } else {
+            unChecked += `<span class="fa fa-star"></span>`
+        }
+    }
+    return (checked+unChecked);
 }
 
 /*Esta función se activa cuando se quiere crear un nuevo comentario*/
@@ -179,7 +172,7 @@ function obtenerFechaActual() {
     var minutes = date.getMinutes().toString().padStart(2, '0');
     var seconds = date.getSeconds().toString().padStart(2, '0');
     //se le da el formato deseado
-    var dateTime = `${year} -${month} -${day} ${hour}: ${minutes}: ${seconds} `;
+    var dateTime = `${year}-${month}-${day} ${hour}:${minutes}:${seconds} `;
 
     return dateTime;
 }
