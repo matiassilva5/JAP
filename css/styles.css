@@ -5,7 +5,7 @@
 .jumbotron .display-4{
     font-weight: bold;
 }
-/*
+
 .jumbotron {
   height: 25%;
   padding: 5em inherit;
@@ -22,13 +22,13 @@
 .img-fluid{
   max-width: 100%;
   height:  auto;
-}*/
-
+}
+/*
 .jumbotron{
     background: url("../img/cover_back.png") no-repeat center center; 
     
     background-size: 100% 100%;
-}
+}*/
 
 @media (min-width: 768px) {
   .jumbotron {
