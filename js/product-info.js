@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
             /*    "relatedProducts": [1, 3]
             */
 
-            //Muestro las imagenes en forma de galería
+            //Muestro las imagenes
             showImagesGallery(product.images);
         }
     });
@@ -90,7 +90,7 @@ function agregarComentario(user, description, score, dateTime) {
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <h6 class="comment-name by-author">
-                                                        <a href="http://creaticode.com/blog">${user}</a>
+                                                        <a href="#">${user}</a>
                                                     </h6>
                                                     <span id="time"> ${dateTime}</span>
                                                 </div>
