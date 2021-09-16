@@ -121,7 +121,6 @@ function drawStars(score){
 /*Esta función se activa cuando se quiere crear un nuevo comentario*/
 function comentar() {
     var coment = document.getElementById("newComent").value;
-    var box = document.getElementById("lista-comentarios");
     var user = localStorage.getItem("usuario");
     var score = obtenerScore();
     var dateTime = obtenerFechaActual();
@@ -139,7 +138,6 @@ function comentar() {
     }]
     guardarComentario(nuevo);
     document.getElementById("newComent").value = ""; /*vacío el textarea*/
-    return false;
 }
 
 function obtenerScore() {
