@@ -41,8 +41,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
             soldCountHTML.innerHTML = product.soldCount;
             categoryHTML.innerHTML = product.category;
 
-            /*    "relatedProducts": [1, 3]
-            */
+            getJSONData(PRODUCTS_URL).then(function (resultObj2) {
+                if (resultObj2.status === "ok") {
+                    products = resultObj2.data;
+                    related = product.relatedProducts;
+                    agregarProductosRelacionados(products, related)
+                
+                }
+            });
 
             //Muestro las imagenes
             showImagesGallery(product.images);
@@ -57,6 +63,22 @@ document.addEventListener("DOMContentLoaded", function (e) {
         }
     });
 });
+
+function agregarProductosRelacionados(products, related){
+    let htmlContentToAppend = "";
+
+    for (let i = 0; i < related.length; i++) {
+        let prodRel = products[related[i]];
+        htmlContentToAppend += `
+            <img class="card-img-top" src="${prodRel.imgSrc}" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">${prodRel.name}</h5>
+              <p class="card-text">${prodRel.description}</p>
+              <a href="#" class="btn btn-primary">Ver</a>
+            </div>`
+        document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
+    }
+}
 
 /*En esta función vamos a agregar todos los comentarios al elemento html creado para contenerlos*/
 function insertarComentarios(comentarios) {

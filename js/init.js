@@ -50,6 +50,7 @@ function agregarNombreUsuario(){
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="my-profile.html"> Mi Perfil </a>
+          <a class="dropdown-item" href="cart.html"> Ir al carrito </a>
           <a id="cerrarSesion" class="dropdown-item" href="index.html"> Cerrar sesión</a>
         </div>
       </div>`;
