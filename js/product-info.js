@@ -1,22 +1,25 @@
 var product = {};
 
 function showImagesGallery(array) {
-
     let htmlContentToAppend = "";
+    htmlContentToAppend = `<div class="carousel-item active">
+                        <img class="d-block w-100" src="${array[0]}" alt="">
+                        </div>`
+    let indicators = `<li data-target="#carouselExampleIndicators" data-slide-to="0"
+                    class="active"></li>`;
 
-    for (let i = 0; i < array.length; i++) {
+    for(let i=1; i<array.length;i++){
         let imageSrc = array[i];
-
-        htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
-        </div>`
-
-        document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+        htmlContentToAppend += `<div class="carousel-item">
+                        <img class="d-block w-100" src="${array[i]}" alt="">
+                        </div>`
+        indicators += `<li data-target="#carouselExampleIndicators" data-slide-to="${i}"></li>`;
     }
+
+    document.getElementById("indicators").innerHTML = indicators;
+    document.getElementById("carousel").innerHTML = htmlContentToAppend;
 }
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -32,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
             let productCostHTML = document.getElementById("productCost");
             let soldCountHTML = document.getElementById("soldCount");
             let categoryHTML = document.getElementById("category");
-            //let relatedProductsHTML = document.getElementById("relatedProducts");
 
 
             productNameHTML.innerHTML = product.name;
@@ -70,12 +72,14 @@ function agregarProductosRelacionados(products, related){
     for (let i = 0; i < related.length; i++) {
         let prodRel = products[related[i]];
         htmlContentToAppend += `
+        <div class="card" style="width:40%; display:inline-block">
             <img class="card-img-top" src="${prodRel.imgSrc}" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">${prodRel.name}</h5>
               <p class="card-text">${prodRel.description}</p>
               <a href="#" class="btn btn-primary">Ver</a>
-            </div>`
+            </div>
+        </div>`
         document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
     }
 }
