@@ -1,5 +1,6 @@
 .jumbotron, .card-body, .container, .site-header{
     font-family: 'Raleway', serif !important;
+    height: 100%;
 }
 
 .jumbotron .display-4{
@@ -168,7 +169,13 @@ a.custom-card:hover {
 }
 
 
+#cart {
+  background-color: white;
+}
 
+#radios {
+  color:  black;
+}
 
 
 
