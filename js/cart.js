@@ -1,6 +1,4 @@
 let productosCarrito = [];
-
-
 let moneda = "UYU";
 
 /*completa la función para actualizar el subtotal del producto al modificar la cantidad del mismo*/
@@ -40,7 +38,7 @@ function showCarrito() {
     document.getElementById("carrito").innerHTML = htmlToAppend;
 }
 
-
+//Actualiza el valor de los costos según la moneda seleccionada
 function cambiarMonedas() {
     let costoUnitario = 0;
     let cantidad = 0;
@@ -81,7 +79,6 @@ function convertir(costo, currency) {
 
 
 function getCarrito(url) {
-
     return fetch(url)
         .then(respuesta => {
             return respuesta.json();
