@@ -64,15 +64,16 @@
   <div class="container p-5">
     <h2 class="text-center">Mi perfil</h2>
     <br>
-    <!--imagen del usuario-->
-    <div class="col text-center">
-      <img id="foto" height="200" alt="Imagen seleccionada...">
-      <br> <br>
-      <input type="file" onchange="previewFile()" id="inputFoto">
-      <br><br>
-    </div>
+    
     <!--formulario donde se ingresan los datos del usuario-->
     <form class="row">
+      <!--imagen del usuario-->
+      <div class="form-group col-md-12 text-center">
+          <img id="foto" height="200" alt="Imagen seleccionada...">
+          <input type="file" class="form-control-file" onchange="previewFile()" id="inputFoto">
+          <br>
+      </div>
+
       <div class="form-group col-md-6">
         <label for="primerNombre">Primer nombre</label>
         <input type="text" class="form-control" id="primerNombre" required autocomplete="off">
