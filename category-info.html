@@ -16,33 +16,34 @@
   <link href="css/styles.css" rel="stylesheet">
 </head>
 
-<body>
-  <nav id="cabezal"  class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
-  <a class="navbar-brand" href="home.html">E-Commerce</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<body style="background-color:#dee1e3;">
+  <nav id="cabezal" class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
+    <a class="navbar-brand" href="home.html">E-Commerce</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="home.html">Inicio<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="categories.html">Categorías</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="products.html">Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="sell.html">Vender</a>
-      </li>
-      
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="home.html">Inicio<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
 
-    </ul>
- 
-  </div>
-</nav>
+
+      </ul>
+
+    </div>
+  </nav>
   <main role="main">
     <div class="container mt-5">
       <div class="text-center p-4">
@@ -68,7 +69,27 @@
         <dd>
           <p id="productCriteria"></p>
         </dd>
+        <dt>Imágenes ilustrativas</dt>
+        <br>
+        <div id="carouselExampleIndicatorsCat" class="carousel slide col-md-8" data-ride="carousel">
 
+          <ul class="carousel-indicators" id="indicatorsCat">
+
+          </ul>
+
+          <div class="carousel-inner" id="carouselCat">
+
+          </div>
+
+          <a class="carousel-control-prev" href="#carouselExampleIndicatorsCat" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicatorsCat" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          </a>
+        </div>
+        <br>
+        <!-- 
         <dt>Imágenes ilustrativas</dt>
         <dd>
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
@@ -77,6 +98,7 @@
       </dl>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     </div>
+    -->
   </main>
   <footer class="text-muted">
     <div class="container">

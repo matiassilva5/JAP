@@ -17,34 +17,35 @@
 </head>
 
 <body>
-  <nav id="cabezal"  class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
-  <a class="navbar-brand" href="home.html">E-Commerce</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <nav id="cabezal" class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
+    <a class="navbar-brand" href="home.html">E-Commerce</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="home.html">Inicio<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="categories.html">Categorías</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="products.html">Productos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="sell.html">Vender</a>
-      </li>
-      
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="home.html">Inicio<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="products.html">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
 
-     
-     
-    </ul>
-  
-  </div>
-</nav>
+
+
+
+      </ul>
+
+    </div>
+  </nav>
   <main role="main" class="pb-5">
     <div class="text-center p-4">
       <h2>Categorías</h2>
@@ -71,7 +72,7 @@
         <div class="col-md-6 col-sm-12 mb-1 container">
           <div class="row container p-0 m-0">
             <div class="col">
-              <p class="font-weight-normal text-right my-2">Cant.</p>
+              <p class="font-weight-normal text-right my-2">Cantidad</p>
             </div>
             <div class="col">
               <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
@@ -79,7 +80,7 @@
             <div class="col">
               <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
             </div>
-            <div class="col-3 p-0">
+            <div class="col">
               <div class="btn-group" role="group">
                 <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
                 <button class="btn btn-primary btn-sm" id="clearRangeFilter">Limpiar</button>
@@ -88,9 +89,8 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="list-group" id="cat-list-container">
-        </div>
+      <div class="row" id="cat-list-container" style="color:black">
+        <!--Aquí se agrega un contenedor vacío, en el cual se agregará la lista de categorías desde "categories.js"-->
       </div>
     </div>
   </main>
