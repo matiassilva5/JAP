@@ -28,6 +28,7 @@ function guardarDatos() {
 		sApellido: document.getElementById("segundoApellido").value,
 		email: document.getElementById("emailPerfil").value,
 		telefono: document.getElementById("telefono").value,
+		fechaNac: document.getElementById("fechaNac").value,
 		imagen: preview.src
 	}
 	localStorage.setItem("datos", JSON.stringify(datos));
@@ -45,6 +46,8 @@ function mostrarDatos() {
 		document.getElementById("segundoApellido").value = datos.sApellido;
 		document.getElementById("emailPerfil").value = datos.email;
 		document.getElementById("telefono").value = datos.telefono;
+		document.getElementById("fechaNac").value = datos.fechaNac;
+
 		preview.src = datos.imagen;
 	} else {
 		preview.src = "https://i.ibb.co/NFJM7W5/Figura-2-Avatar-que-aparece-por-defecto-en-Facebook.png";
