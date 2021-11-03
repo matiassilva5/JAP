@@ -12,6 +12,7 @@ function updateProductoSubtotal(id) {
     document.getElementById("subtotal" + id).innerHTML = cantidad * costo;
     sumaSubtotales();
     modificarTotal();
+    updateTotalCosts();
 }
 
 /*muestra los productos del carrito con el input correspondiente a la cantidad*/
@@ -65,6 +66,7 @@ function sumaSubtotales() {
 
     document.getElementById("subtotal").innerHTML = `Subtotal (${moneda})`;
     document.getElementById("sumaSubtotal").innerHTML = subtotal;
+    updateTotalCosts();
 }
 
 //hace la conversion del costo segun la moneda elegida
@@ -125,5 +127,40 @@ document.addEventListener("DOMContentLoaded", function (e) {
 })
 
 
+function desplegarFormTarjeta(){
+    document.getElementById("formTarjeta").style.display = 'block';
+    document.getElementById("formTransferencia").style.display = 'none';
+};
+
+function desplegarFormTransferencia(){
+    document.getElementById("formTarjeta").style.display = 'none';
+    document.getElementById("formTransferencia").style.display = 'block';
+};
 
 
+comissionPercentage = 0;
+document.getElementById("premium").addEventListener("change", function(){
+    comissionPercentage = 0.15;
+    updateTotalCosts();
+});
+
+document.getElementById("express").addEventListener("change", function(){
+    comissionPercentage = 0.07;
+    updateTotalCosts();
+});
+
+document.getElementById("standard").addEventListener("change", function(){
+    comissionPercentage = 0.05;
+    updateTotalCosts();
+});
+
+//Función que se utiliza para actualizar los costos de publicación
+function updateTotalCosts(){
+    let subtotal = parseFloat(document.getElementById("sumaSubtotal").innerHTML);
+    
+    let costoEnvio = subtotal * comissionPercentage;
+    document.getElementById("costoEnvio").innerHTML = costoEnvio;
+
+    let total =  subtotal +  costoEnvio;
+    document.getElementById("costoTotal").innerHTML = total;
+}
