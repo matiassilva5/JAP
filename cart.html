@@ -75,7 +75,7 @@
     <br>
     <div class="container card card-body pl-5" style="color:black">
       <h3>Artículos a comprar</h3>
-      <form class="form-horizontal">
+      <div class="form-horizontal">
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -91,101 +91,115 @@
             <tbody id="carrito"></tbody>
           </table>
         </div>
-      </form>
+      </div>
     </div>
     <br>
 
     <!--TIPO DE ENVIO-->
-    <div class="container card card-body" style="color:black">
-      <div class="row">
-        <div class="col-md-6 pl-5">
-          <h3>Tipo de envío</h3>
-          <hr>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="premium" value="option"  />
-            <label class="form-check-label" for="premium">
-              Premium 2 a 5 dias (15%)
-            </label>
+    <form onsubmit="return validarCompra();">
+      <div class="container card card-body" style="color:black">
+        <div class="row">
+          <div class="col-md-6 pl-5">
+            <h3>Tipo de envío</h3>
+            <hr>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="premium" value="option" required />
+              <label class="form-check-label" for="premium">
+                Premium 2 a 5 dias (15%)
+              </label>
+            </div>
+            <br>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="express" value="option" />
+              <label class="form-check-label" for="express">
+                Express 5 a 8 dias (7%)
+              </label>
+            </div>
+            <br>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="standard" value="option" />
+              <label class="form-check-label" for="standard">
+                Standard 12 a 15 dias (5%)
+              </label>
+            </div>
+            <br>
           </div>
-          <br>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="express" value="option"  />
-            <label class="form-check-label" for="express">
-              Express 5 a 8 dias (7%)
-            </label>
-          </div>
-          <br>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="standard" value="option"  />
-            <label class="form-check-label" for="standard">
-              Standard 12 a 15 dias (5%)
-            </label>
-          </div>
-          <br>
-        </div>
 
 
-        <!--DIRECCION DE ENVIO-->
-        <div class="col-md-6 pl-5" style="color:black">
-          <h3>Dirección de envío</h3>
-          <hr>
-          <form>
+          <!--DIRECCION DE ENVIO-->
+          <div class="col-md-6 pl-5" style="color:black">
+            <h3>Dirección de envío</h3>
+            <hr>
+
             <div class="form-group">
               <label for="calle">Calle</label>
-              <input type="text" class="form-control" id="calle" placeholder="Insertar calle...">
+              <input required type="text" class="form-control" id="calle" placeholder="Insertar calle...">
             </div>
 
             <div class="form-group">
               <label for="numero">Número</label>
-              <input type="number" class="form-control" id="numero" min="0" placeholder="Insertar número de puerta...">
+              <input required type="number" class="form-control" id="numero" min="0"
+                placeholder="Insertar número de puerta...">
             </div>
 
             <div class="form-group">
               <label for="esquina">Esquina</label>
-              <input type="text" class="form-control" id="esquina" placeholder="Insertar esquina...">
+              <input required type="text" class="form-control" id="esquina" placeholder="Insertar esquina...">
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
-    <br>
-    <!--COSTOS A PAGAR-->
-    <div class="container card card-body" style="color:black">
-      <div class="row">
-        <div class="col-md-6 pl-5">
-          <h3>Costos</h3>
-          <table class="table mt-3">
-            <tbody>
-              <tr>
-                <td id="subtotal"></td>
-                <td id="sumaSubtotal"></td>
-              </tr>
-              <tr>
-                <td>Costo de envío</td>
-                <td id="costoEnvio">0</td>
-              </tr>
-              <tr>
-                <td id="total"></td>
-                <td id="costoTotal"></td>
-              </tr>
-            </tbody>
-          </table>
-          <div></div>
-          <div></div>
-        </div>
 
-        <!--FORMA DE PAGO-->
-        <div class="col-md-6 pl-5" style="color:black">
-          <h3>Forma de pago</h3>
-          <hr>
-          <div class="row">
-              <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Seleccionar</button>
           </div>
 
-          <!--<span id="formaPago">No seleccionado &nbsp; &nbsp; <a href="#">Seleccionar</a></span>-->
         </div>
       </div>
-    </div>
+      <br>
+      <!--COSTOS A PAGAR-->
+      <div class="container card card-body" style="color:black">
+        <div class="row">
+
+          <div class="col-md-6 pl-5">
+            <h3>Costos</h3>
+            <table class="table mt-3">
+              <tbody>
+                <tr>
+                  <td id="subtotal"></td>
+                  <td id="sumaSubtotal"></td>
+                </tr>
+                <tr>
+                  <td>Costo de envío</td>
+                  <td id="costoEnvio">0</td>
+                </tr>
+                <tr>
+                  <td id="total"></td>
+                  <td id="costoTotal"></td>
+                </tr>
+              </tbody>
+            </table>
+            <div></div>
+            <div></div>
+          </div>
+
+          <!--FORMA DE PAGO-->
+          <div class="col-md-6 pl-5" style="color:black">
+            <h3>Forma de pago</h3>
+            <hr>
+            <div class="row">
+              <!--     <button type="button" class="m-1 btn btn-link" data-toggle="modal" data-target="#contidionsModal">Seleccionar</button>-->
+              <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Seleccionar
+              </button>
+            </div>
+
+            <!--<span id="formaPago">No seleccionado &nbsp; &nbsp; <a href="#">Seleccionar</a></span>-->
+          </div>
+
+        </div>
+      </div>
+      <br>
+      <div class="form-group text-center">
+        <button type="submit" class="btn  btn-primary">Finalizar compra</button>
+      </div>
+    </form>
   </main>
 
   <footer class="text-muted bg-light">
@@ -199,69 +213,75 @@
   </footer>
 
 
-  <div class="modal fade" tabindex="-1" role="dialog" id="contidionsModal">
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Seleccionar forma de pago</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Seleccionar forma de pago</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <div class="container">
+          <form class="needs-validation" novalidate onsubmit="return habilitarCompra();">
             <div class="d-block my-3">
-            <div id="tarConteiner" class="custom-control custom-radio">
-              <input id="tarjeta" onclick="desplegarFormTarjeta();" name="publicationType" type="radio" class="custom-control-input"
-                required="">
+            <div id="tarConteiner" class="custom-control custom-radio form-check">
+              <input id="tarjeta" onclick="desplegarFormTarjeta();" name="publicationType" type="radio" class="custom-control-input" required>
               <label class="custom-control-label" for="tarjeta">Tarjeta de crédito</label>
               <br>
               <div id="formTarjeta" style="display: none;">
-                <form> 
+                
                   <div class="form-row"> 
                       <div class="form-group col-md-6"> 
                           <label>Número de Tarjeta</label> 
-                          <input class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx"> 
+                          <input id="nroTarjeta"class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx" required>  
                           </div> 
                           <div class="form-group col-md-2"> 
                           <label>Caducidad</label> 
-                          <input class="form-control" placeholder="MM/AA"> 
+                          <input id="caducidad"class="form-control" placeholder="MM/AA" required> 
                           </div> 
-                          </div> 
-                          <div class="form-row"> 
+                      </div> 
+                   <div class="form-row"> 
                           <div class="form-group col-md-6"> 
                           <label>Titular de la Tarjeta</label> 
-                          <input type="text" class="form-control" placeholder="Nombre Apellido"> 
+                          <input id="titular"type="text" class="form-control" placeholder="Nombre Apellido" required> 
                           </div> 
                           <div class="form-group col-md-2"> 
                           <label>CVV</label> 
-                          <input class="form-control" placeholder="XXX"> 
+                          <input id="cvv"class="form-control" placeholder="XXX" required> 
                       </div> 
                   </div> 
-                </form>
               </div>
             </div>
             <br>
-            <div id="transfConteiner"class="custom-control custom-radio">
-              <input id="transferencia" onclick="desplegarFormTransferencia();" name="publicationType" type="radio" class="custom-control-input" required="">
+            <div id="transfConteiner"class="custom-control custom-radio form-check">
+              <input id="transferencia" onclick="desplegarFormTransferencia();" name="publicationType" type="radio" class="custom-control-input">
               <label class="custom-control-label" for="transferencia">Transferencia bancaria</label>
               <br>
               <div id="formTransferencia" style="display: none;">
-                <form> 
+               
                   <div class="form-row"> 
                       <div class="form-group col-md-6"> 
-                          <label>Número de cuenta bancaria a depositar</label> 
-                          <input class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx"> 
-                          </div> 
-              </form>
+                          <label>Número de cuenta bancaria</label> 
+                           <input id="nroCuenta" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx" required> 
+                      </div> 
+               
             </div> 
+         </div> 
+       </div> 
 
-            </div>
-          </div>
-          </div>
+
+
+            <button type="submit" class="btn btn-primary">Confirmar</button>
+
+          </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
         </div>
       </div>
     </div>
@@ -270,18 +290,18 @@
 
   <div id="spinner-wrapper">
     <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </div>
 
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/dropzone.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/dropzone.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 
 </html>
