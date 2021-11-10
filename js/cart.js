@@ -31,6 +31,7 @@ function showCarrito() {
         <td class="align-middle" id="unitCost${id}">${moneda} ${costo}</td>
         <td class="align-middle"><input class="form-control" id="${id}" onchange="updateProductoSubtotal(${id});" type="number" min ="1" value=${article.count}></td>
         <td class="align-middle" id="subtotal${id}">${article.count * costo}</td>
+        <td class="align-middle"> <button type="button" class="btn btn-secondary" onclick="borrarElemento(${id})"> quitar </button> </td>
         </tr>`
 
         id++;
@@ -94,6 +95,18 @@ function modificarTotal() {
         parseFloat(document.getElementById("costoEnvio").innerHTML)}</b>`;
 }
 
+//quita un elemento con un id determinado del carrito de compras
+function borrarElemento(id){
+    let i = 0;
+    for(let p of productosCarrito){
+        p.count = document.getElementById(i).value; //guardar cantidades 
+        i++;
+    }
+    productosCarrito.splice(id, 1);//quitar elemento del array de productos
+    showCarrito();//actualizar carrito
+    sumaSubtotales();//actualizar subtotal
+    modificarTotal();//actualizar costos
+}
 
 document.addEventListener("DOMContentLoaded", function (e) {
     getCarrito("https://japdevdep.github.io/ecommerce-api/cart/654.json")
@@ -210,6 +223,7 @@ function validarCompra() {
         let caducidad = document.getElementById("caducidad").value;
 
         if ((tarjeta != "") && (titular != "") && (caducidad != "") && (cvv != "")){
+            alert("¡Su compra ha sido realizada con éxito!");    
             return true
         } else {
             alert("Completar campos de tarjeta");
@@ -218,7 +232,8 @@ function validarCompra() {
     } else if(document.getElementById("transferencia").checked) {
          let nrocuenta = document.getElementById("nroCuenta").value;
          if (nrocuenta != ""){
-                return true
+            alert("¡Su compra ha sido realizada con éxito!");
+            return true
          } else {
             alert("Completar campos de transferencia");
             return false;   
@@ -226,7 +241,7 @@ function validarCompra() {
     } else if (!(document.getElementById("tarjeta").checked || document.getElementById("transferencia").checked)){
         alert("Seleccionar forma de pago");
         return false;
-    }    
+    }
 }
 
 function habilitarCompra(){
