@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
         })
 })
 
-
+//se llama al seleccionar tarjeta de credito como forma de pago
 function desplegarFormTarjeta(){
     document.getElementById("formTarjeta").style.display = 'block';
     document.getElementById("formTransferencia").style.display = 'none';
@@ -151,7 +151,7 @@ function desplegarFormTarjeta(){
     document.getElementById("cvv").disabled = false;
     document.getElementById("caducidad").disabled = false;
 };
-
+//se llama al seleccionar trasferencia bancaria como forma de pago
 function desplegarFormTransferencia(){
     document.getElementById("formTarjeta").style.display = 'none';
     document.getElementById("formTransferencia").style.display = 'block';
@@ -166,7 +166,7 @@ function desplegarFormTransferencia(){
 };
 
 
-
+//se activan cuando elegimos tipo de envio
 comissionPercentage = 0;
 document.getElementById("premium").addEventListener("change", function(){
     comissionPercentage = 0.15;
@@ -194,27 +194,26 @@ function updateTotalCosts(){
     document.getElementById("costoTotal").innerHTML = total;
 }
 
+//validacion de campos del modal
+(function() {
+'use strict';
+window.addEventListener('load', function() {
 
-  // Example starter JavaScript for disabling form submissions if there are invalid fields
-  (function() {
-    'use strict';
-    window.addEventListener('load', function() {
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {
-        form.addEventListener('submit', function(event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
+    var forms = document.getElementsByClassName('needs-validation');
+
+    var validation = Array.prototype.filter.call(forms, function(form) {
+    form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+        }
+        form.classList.add('was-validated');
     }, false);
-  })();
+    });
+}, false);
+})();
 
-
+//validacion de toda la compra, al dar finalizar compra
 function validarCompra() {
     if (document.getElementById("tarjeta").checked) {
         let tarjeta = document.getElementById("nroTarjeta").value;
@@ -244,6 +243,7 @@ function validarCompra() {
     }
 }
 
+//validacion del modal al dar confirmar
 function habilitarCompra(){
      if (document.getElementById("tarjeta").checked) {
         let tarjeta = document.getElementById("nroTarjeta").value;
