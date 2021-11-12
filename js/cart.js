@@ -25,7 +25,7 @@ function showCarrito() {
 
         htmlToAppend += `
         <tr>
-        <th scope="row"> ${id+1}</th>
+        <th scope="row"> ${id + 1}</th>
         <td><img src="${article.src}" class = "img-fluid" style ="max-width:50px!important"></td>
         <td class="align-middle">${article.name}</td>
         <td class="align-middle" id="unitCost${id}">${moneda} ${costo}</td>
@@ -96,9 +96,9 @@ function modificarTotal() {
 }
 
 //quita un elemento con un id determinado del carrito de compras
-function borrarElemento(id){
+function borrarElemento(id) {
     let i = 0;
-    for(let p of productosCarrito){
+    for (let p of productosCarrito) {
         p.count = document.getElementById(i).value; //guardar cantidades 
         i++;
     }
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 })
 
 //se llama al seleccionar tarjeta de credito como forma de pago
-function desplegarFormTarjeta(){
+function desplegarFormTarjeta() {
     document.getElementById("formTarjeta").style.display = 'block';
     document.getElementById("formTransferencia").style.display = 'none';
 
@@ -152,7 +152,7 @@ function desplegarFormTarjeta(){
     document.getElementById("caducidad").disabled = false;
 };
 //se llama al seleccionar trasferencia bancaria como forma de pago
-function desplegarFormTransferencia(){
+function desplegarFormTransferencia() {
     document.getElementById("formTarjeta").style.display = 'none';
     document.getElementById("formTransferencia").style.display = 'block';
 
@@ -168,49 +168,49 @@ function desplegarFormTransferencia(){
 
 //se activan cuando elegimos tipo de envio
 comissionPercentage = 0;
-document.getElementById("premium").addEventListener("change", function(){
+document.getElementById("premium").addEventListener("change", function () {
     comissionPercentage = 0.15;
     updateTotalCosts();
 });
 
-document.getElementById("express").addEventListener("change", function(){
+document.getElementById("express").addEventListener("change", function () {
     comissionPercentage = 0.07;
     updateTotalCosts();
 });
 
-document.getElementById("standard").addEventListener("change", function(){
+document.getElementById("standard").addEventListener("change", function () {
     comissionPercentage = 0.05;
     updateTotalCosts();
 });
 
 //Función que se utiliza para actualizar los costos de publicación
-function updateTotalCosts(){
+function updateTotalCosts() {
     let subtotal = parseFloat(document.getElementById("sumaSubtotal").innerHTML);
-    
+
     let costoEnvio = subtotal * comissionPercentage;
     document.getElementById("costoEnvio").innerHTML = costoEnvio;
 
-    let total =  subtotal +  costoEnvio;
+    let total = subtotal + costoEnvio;
     document.getElementById("costoTotal").innerHTML = total;
 }
 
 //validacion de campos del modal
-(function() {
-'use strict';
-window.addEventListener('load', function() {
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
 
-    var forms = document.getElementsByClassName('needs-validation');
+        var forms = document.getElementsByClassName('needs-validation');
 
-    var validation = Array.prototype.filter.call(forms, function(form) {
-    form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-        }
-        form.classList.add('was-validated');
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
     }, false);
-    });
-}, false);
 })();
 
 //validacion de toda la compra, al dar finalizar compra
@@ -221,46 +221,46 @@ function validarCompra() {
         let cvv = document.getElementById("cvv").value;
         let caducidad = document.getElementById("caducidad").value;
 
-        if ((tarjeta != "") && (titular != "") && (caducidad != "") && (cvv != "")){
-            alert("¡Su compra ha sido realizada con éxito!");    
+        if ((tarjeta != "") && (titular != "") && (caducidad != "") && (cvv != "")) {
+            alert("¡Su compra ha sido realizada con éxito!");
             return true
         } else {
             alert("Completar campos de tarjeta");
             return false;
         }
-    } else if(document.getElementById("transferencia").checked) {
-         let nrocuenta = document.getElementById("nroCuenta").value;
-         if (nrocuenta != ""){
+    } else if (document.getElementById("transferencia").checked) {
+        let nrocuenta = document.getElementById("nroCuenta").value;
+        if (nrocuenta != "") {
             alert("¡Su compra ha sido realizada con éxito!");
             return true
-         } else {
+        } else {
             alert("Completar campos de transferencia");
-            return false;   
-         }
-    } else if (!(document.getElementById("tarjeta").checked || document.getElementById("transferencia").checked)){
+            return false;
+        }
+    } else if (!(document.getElementById("tarjeta").checked || document.getElementById("transferencia").checked)) {
         alert("Seleccionar forma de pago");
         return false;
     }
 }
 
 //validacion del modal al dar confirmar
-function habilitarCompra(){
-     if (document.getElementById("tarjeta").checked) {
+function habilitarCompra() {
+    if (document.getElementById("tarjeta").checked) {
         let tarjeta = document.getElementById("nroTarjeta").value;
         let titular = document.getElementById("titular").value;
         let cvv = document.getElementById("cvv").value;
         let caducidad = document.getElementById("caducidad").value;
 
-        if ((tarjeta != "") && (titular != "") && (caducidad != "") && (cvv != "")){
+        if ((tarjeta != "") && (titular != "") && (caducidad != "") && (cvv != "")) {
             /*jquery*/
-           $("#exampleModal").modal('hide');
+            $("#exampleModal").modal('hide');
         }
-    } else if(document.getElementById("transferencia").checked) {
-         let nrocuenta = document.getElementById("nroCuenta").value;
-         if (nrocuenta != ""){
+    } else if (document.getElementById("transferencia").checked) {
+        let nrocuenta = document.getElementById("nroCuenta").value;
+        if (nrocuenta != "") {
             /*jquery*/
-           $("#exampleModal").modal('hide');
-         }
+            $("#exampleModal").modal('hide');
+        }
     }
     return false;
 }
