@@ -183,7 +183,7 @@ document.getElementById("standard").addEventListener("change", function () {
     updateTotalCosts();
 });
 
-//Función que se utiliza para actualizar los costos de publicación
+//Función que se utiliza para actualizar los costos de envio
 function updateTotalCosts() {
     let subtotal = parseFloat(document.getElementById("sumaSubtotal").innerHTML);
 
@@ -253,13 +253,13 @@ function habilitarCompra() {
 
         if ((tarjeta != "") && (titular != "") && (caducidad != "") && (cvv != "")) {
             /*jquery*/
-            $("#exampleModal").modal('hide');
+            $("#idModal").modal('hide');
         }
     } else if (document.getElementById("transferencia").checked) {
         let nrocuenta = document.getElementById("nroCuenta").value;
         if (nrocuenta != "") {
             /*jquery*/
-            $("#exampleModal").modal('hide');
+            $("#idModal").modal('hide');
         }
     }
     return false;
